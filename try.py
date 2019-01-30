@@ -15,6 +15,7 @@ def getNewsContent(urlQueue):
     while True:
         try:
             # 不阻塞的讀取佇列資料
+            urlQueue = 'https://www.setn.com/News.aspx?NewsID=493532'
             news_url = urlQueue.get_nowait()
             i = urlQueue.qsize()
         except Exception as e:
@@ -123,7 +124,6 @@ if __name__ == "__main__":
                     try:
                         fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
                         url_list = f.read().split("\n")
-                        print(url_list)
                         fcntl.flock(f, fcntl.LOCK_UN)
                         break
                     except OSError:
