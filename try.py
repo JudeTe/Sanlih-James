@@ -58,7 +58,7 @@ def getNewsContent(urlQueue):
                 column = NewsList.find_all('div', class_='col-sm-12')
                 # for vital in column:
                 vital = column[0]
-                news_title = vital.find('h3', class_='view-li-title').text
+                news_title = vital.find('h3', class_='view-li-title')
                 news_create_time = vital.find('time', style='color: #a2a2a2;').text
                 news_tag = vital.find('div', class_='newslabel-tab').text
                 url2 = vital.find('h3', class_='view-li-title')
@@ -77,7 +77,7 @@ def getNewsContent(urlQueue):
                 news_content = html2.find('div', class_='Content2').text
                 news_keyword = html2.find('div', class_='keyword').text
 
-                # print(news_title)
+                print(news_title.text)
                 # print(news_url)
                 # print(news_create_time)
                 # print(news_content)
