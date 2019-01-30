@@ -72,38 +72,39 @@ def getNewsContent(urlQueue):
                 news_html = BeautifulSoup(news_response, features="html.parser") # features="html.parser" for Ubuntu 18.04
                 NewsList = news_html.find('div', class_='row NewsList')
                 column = NewsList.find_all('div', class_='col-sm-12')
-                # for vital in column:
-                vital = column[0]
-                news_title = vital.find('h3', class_='view-li-title')
-                news_create_time = vital.find('time', style='color: #a2a2a2;')
-                news_tag = vital.find('div', class_='newslabel-tab')
-                url2 = vital.find('h3', class_='view-li-title')
-                urls = url2.find('a')['href']
-                splits = urls.split('/')
-                if splits[1] == 'e':
-                    urls = "https://www.setn.com" + urls
-                else:
-                    urls = "https://www.setn.com/e" + urls
-                src3 = urls
-                response2 = requests.get(src3)
-                html2 = BeautifulSoup(response2.text)
-                news_content = html2.find('div', class_='Content2')
-                news_keyword = html2.find('div', class_='keyword')
-
-                keyword_list = []  # 紀錄此新聞的關鍵字
-                if not news_keyword == None:
-                    news_keyword = news_keyword.find_all("a")
-                    for keyword in news_keyword:
-                        keyword_list.append(keyword.text)
-                newsQueue.put({"id": "Sanlih-" + tag_dict[news_tag] + "-" + news_url.split("/")[0],
-                                   "news_link": news_url,
-                                   "news_title": news_title,
-                                   "news_create_time": news_create_time,
-                                   "news_content": news_content,
-                                   "news_keyword": keyword_list,
-                                   "news_tag": news_tag})
-            except AttributeError :
+            except AttributeError:
                 pass
+                # for vital in column:
+            vital = column[0]
+            news_title = vital.find('h3', class_='view-li-title')
+            news_create_time = vital.find('time', style='color: #a2a2a2;')
+            news_tag = vital.find('div', class_='newslabel-tab')
+            url2 = vital.find('h3', class_='view-li-title')
+            urls = url2.find('a')['href']
+            splits = urls.split('/')
+            if splits[1] == 'e':
+                urls = "https://www.setn.com" + urls
+            else:
+                urls = "https://www.setn.com/e" + urls
+            src3 = urls
+            response2 = requests.get(src3)
+            html2 = BeautifulSoup(response2.text)
+            news_content = html2.find('div', class_='Content2')
+            news_keyword = html2.find('div', class_='keyword')
+
+            keyword_list = []  # 紀錄此新聞的關鍵字
+            if not news_keyword == None:
+                news_keyword = news_keyword.find_all("a")
+                for keyword in news_keyword:
+                    keyword_list.append(keyword.text)
+            newsQueue.put({"id": "Sanlih-" + tag_dict[news_tag] + "-" + news_url.split("/")[0],
+                                "news_link": news_url,
+                                "news_title": news_title,
+                                "news_create_time": news_create_time,
+                                "news_content": news_content,
+                                "news_keyword": keyword_list,
+                                "news_tag": news_tag})
+
 
 
 
