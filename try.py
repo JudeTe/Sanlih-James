@@ -70,6 +70,20 @@ def getNewsContent(urlQueue):
                 html2 = BeautifulSoup(response2.text)
                 news_content = html2.find('div', class_='Content2')
                 news_keyword = html2.find('div', class_='keyword')
+                print(news_title)
+                print(news_url)
+                print(news_create_time)
+                print(news_content)
+                print(news_keyword)
+                print(news_tag)
+                newsQueue.put({"id": "apple-" + tag_dict[news_tag] + "-" + news_url.split("/")[-2],
+                               "news_link": news_url,
+                               "news_title": news_title,
+                               "news_create_time": news_create_time,
+                               "news_content": news_content,
+                               "news_keyword": news_keyword,
+                               "news_tag": news_tag,
+                               })
             except AttributeError :
                 pass
             print("Jude2")
@@ -82,20 +96,20 @@ def getNewsContent(urlQueue):
             #                                                                                                      "")
             # 將新聞內容放入佇列
 
-            print(news_title)
-            print(news_url)
-            print(news_create_time)
-            print(news_content)
-            print(news_keyword)
-            print(news_tag)
-            newsQueue.put({"id": "apple-" + tag_dict[news_tag] + "-" + news_url.split("/")[-2],
-                           "news_link": news_url,
-                           "news_title": news_title,
-                           "news_create_time": news_create_time,
-                           "news_content": news_content,
-                           "news_keyword": news_keyword,
-                           "news_tag": news_tag,
-                           })
+            # print(news_title)
+            # print(news_url)
+            # print(news_create_time)
+            # print(news_content)
+            # print(news_keyword)
+            # print(news_tag)
+            # newsQueue.put({"id": "apple-" + tag_dict[news_tag] + "-" + news_url.split("/")[-2],
+            #                "news_link": news_url,
+            #                "news_title": news_title,
+            #                "news_create_time": news_create_time,
+            #                "news_content": news_content,
+            #                "news_keyword": news_keyword,
+            #                "news_tag": news_tag,
+            #                })
 
             # 爲了突出效果，設定延時
             time.sleep(1)
