@@ -55,13 +55,11 @@ def getNewsContent(urlQueue):
                 NewsList = news_html.find('div', class_='row NewsList')
                 if NewsList == "":
                     pass
-                print(NewsList)
                 column = NewsList.find_all('div', class_='col-sm-12')
-                print(column)
                 # for vital in column:
                 vital = column[0]
-                print(vital)
                 news_title = vital.find('h3', class_='view-li-title')
+                print(news_title)
                 news_create_time = vital.find('time', style='color: #a2a2a2;')
                 news_tag = vital.find('div', class_='newslabel-tab')
                 url2 = vital.find('h3', class_='view-li-title')
@@ -73,19 +71,19 @@ def getNewsContent(urlQueue):
                     news_url = "https://www.setn.com" + news_url
                 else:
                     continue
-
+                print('Jude2')
                 src3 = news_url
                 response2 = requests.get(src3)
                 html2 = BeautifulSoup(response2.text)
                 news_content = html2.find('div', class_='Content2')
                 news_keyword = html2.find('div', class_='keyword')
 
-                print(news_title)
-                print(news_url)
-                print(news_create_time)
-                print(news_content)
-                print(news_keyword)
-                print(news_tag)
+                # print(news_title)
+                # print(news_url)
+                # print(news_create_time)
+                # print(news_content)
+                # print(news_keyword)
+                # print(news_tag)
                 newsQueue.put({"id": "apple-" + tag_dict[news_tag] + "-" + news_url.split("/")[-2],
                                "news_link": news_url,
                                "news_title": news_title,
@@ -98,7 +96,7 @@ def getNewsContent(urlQueue):
             except Exception:
                 time.sleep(5)
                 continue
-            print("Jude2")
+            print("Jude3")
 
             # keyword_list = [] # 紀錄此新聞的關鍵字
             # if not news_keyword == None:
