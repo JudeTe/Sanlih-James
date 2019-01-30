@@ -58,8 +58,8 @@ def getNewsContent(urlQueue):
                 column = NewsList.find_all('div', class_='col-sm-12')
                 # for vital in column:
                 vital = column[0]
-                news_title = vital.find('h3', class_='view-li-title')
-                news_create_time = vital.find('time', style='color: #a2a2a2;').text
+                news_title = vital.find('h3', class_='view-li-title').text
+                news_create_time = vital.find('time', style='color: #a2a2a2;')
                 news_tag = vital.find('div', class_='newslabel-tab').text
                 url2 = vital.find('h3', class_='view-li-title')
                 urls = url2.find('a')['href']
@@ -74,10 +74,10 @@ def getNewsContent(urlQueue):
                 src3 = news_url
                 response2 = requests.get(src3)
                 html2 = BeautifulSoup(response2.text)
-                news_content = html2.find('div', class_='Content2').text
-                news_keyword = html2.find('div', class_='keyword').text
+                news_content = html2.find('div', class_='Content2')
+                news_keyword = html2.find('div', class_='keyword')
 
-                print(news_title.text)
+                print(news_title)
                 # print(news_url)
                 # print(news_create_time)
                 # print(news_content)
@@ -86,9 +86,9 @@ def getNewsContent(urlQueue):
                 newsQueue.put({"id": "apple-" + tag_dict[news_tag] + "-" + news_url.split("/")[-2],
                                "news_link": news_url,
                                "news_title": news_title,
-                               "news_create_time": news_create_time,
-                               "news_content": news_content,
-                               "news_keyword": news_keyword,
+                               "news_create_time": news_create_time.text,
+                               "news_content": news_content.text,
+                               "news_keyword": news_keyword.text,
                                "news_tag": news_tag,
                                })
             # except AttributeError :
