@@ -59,7 +59,6 @@ def getNewsContent(urlQueue):
                 # for vital in column:
                 vital = column[0]
                 news_title = vital.find('h3', class_='view-li-title')
-                print(news_title)
                 news_create_time = vital.find('time', style='color: #a2a2a2;')
                 news_tag = vital.find('div', class_='newslabel-tab')
                 url2 = vital.find('h3', class_='view-li-title')
@@ -92,8 +91,10 @@ def getNewsContent(urlQueue):
                                "news_keyword": news_keyword,
                                "news_tag": news_tag,
                                })
-            except AttributeError :
-                pass
+            # except AttributeError :
+            except Exception:
+                time.sleep(5)
+                continue
             print("Jude2")
 
             # keyword_list = [] # 紀錄此新聞的關鍵字
