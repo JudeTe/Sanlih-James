@@ -54,7 +54,7 @@ def getNewsContent(urlQueue):
                 news_html = BeautifulSoup(news_response, features="html.parser")  # features="html.parser" for Ubuntu 18.04
                 NewsList = news_html.find('div', class_='row NewsList')
                 if NewsList == "":
-                    break
+                    pass
                 column = NewsList.find_all('div', class_='col-sm-12')
                 # for vital in column:
                 vital = column[0]
@@ -63,16 +63,20 @@ def getNewsContent(urlQueue):
                 news_tag = vital.find('div', class_='newslabel-tab')
                 url2 = vital.find('h3', class_='view-li-title')
                 urls = url2.find('a')['href']
-                splits = urls.split('/')
-                if splits[1] == 'e':
-                    urls = "https://www.setn.com" + urls
+                RealUrl = urls.split('/')
+                if RealUrl[1] == 'e':
+                    news_url = "https://www.setn.com/" + RealUrl[2]
+                elif RealUrl[1].startswith('News'):
+                    news_url = "https://www.setn.com" + news_url
                 else:
-                    urls = "https://www.setn.com/e" + urls
-                src3 = urls
+                    continue
+
+                src3 = news_url
                 response2 = requests.get(src3)
                 html2 = BeautifulSoup(response2.text)
                 news_content = html2.find('div', class_='Content2')
                 news_keyword = html2.find('div', class_='keyword')
+                
                 print(news_title)
                 print(news_url)
                 print(news_create_time)
