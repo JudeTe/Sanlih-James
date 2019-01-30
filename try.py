@@ -15,9 +15,9 @@ def getNewsContent(urlQueue):
     while True:
         try:
             # 不阻塞的讀取佇列資料
-            urlQueue = 'https://www.setn.com/News.aspx?NewsID=493532'
             news_url = urlQueue.get_nowait()
             i = urlQueue.qsize()
+            news_url = 'https://www.setn.com/News.aspx?NewsID=493532'
         except Exception as e:
             break
         #print('Current Thread Name %s, Url: %s ' % (threading.currentThread().name, news_url))
