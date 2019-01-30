@@ -123,6 +123,7 @@ if __name__ == "__main__":
                     try:
                         fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
                         url_list = f.read().split("\n")
+                        print(url_list)
                         fcntl.flock(f, fcntl.LOCK_UN)
                         break
                     except OSError:
