@@ -53,6 +53,8 @@ def getNewsContent(urlQueue):
             try :
                 news_html = BeautifulSoup(news_response, features="html.parser")  # features="html.parser" for Ubuntu 18.04
                 NewsList = news_html.find('div', class_='row NewsList')
+                if NewsList == "":
+                    break
                 column = NewsList.find_all('div', class_='col-sm-12')
                 # for vital in column:
                 vital = column[0]
