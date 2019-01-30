@@ -33,9 +33,9 @@ if __name__ == "__main__":
             news_url = src.find('a')['href']
             RealUrl = news_url.split('/')
             if RealUrl[1] == 'e':
-                news_url = "https://www.setn.com" + news_url
+                news_url = "https://www.setn.com" + RealUrl[2]
             elif RealUrl[1].startswith('News'):
-                news_url = "https://www.setn.com/e" + news_url
+                news_url = "https://www.setn.com" + news_url
             else :
                 continue
 
