@@ -55,9 +55,12 @@ def getNewsContent(urlQueue):
                 NewsList = news_html.find('div', class_='row NewsList')
                 if NewsList == "":
                     pass
+                print(NewsList)
                 column = NewsList.find_all('div', class_='col-sm-12')
+                print(column)
                 # for vital in column:
                 vital = column[0]
+                print(vital)
                 news_title = vital.find('h3', class_='view-li-title')
                 news_create_time = vital.find('time', style='color: #a2a2a2;')
                 news_tag = vital.find('div', class_='newslabel-tab')
@@ -105,7 +108,6 @@ def getNewsContent(urlQueue):
 
             # 爲了突出效果，設定延時
             time.sleep(1)
-            print('Jude3')
 if __name__ == "__main__":
     # 開啟要爬的新聞網址檔案
     while True:
