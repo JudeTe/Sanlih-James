@@ -58,6 +58,14 @@ def getNewsContent(urlQueue):
             news_keyword = news_html.find("div", class_="keyword").text
             try :
                 news_tag = news_html.find("li", class_=" active").text
+
+                newsQueue.put({"id": "Sanlih-" + tag_dict[news_tag.text] + "-" + news_url.split("/")[-2],
+                               "news_link": news_url,
+                               "news_title": news_title,
+                               "news_create_time": news_create_time,
+                               "news_content": news_content,
+                               "news_keyword": news_keyword,
+                               "news_tag": news_tag})
             except AttributeError :
                 # news_tag == "娛樂"
                 pass
@@ -81,13 +89,13 @@ def getNewsContent(urlQueue):
                 #     keyword_list.append(keyword.text)
 
             # 將新聞內容放入佇列
-            newsQueue.put({"id": "Sanlih-" + tag_dict[news_tag.text] + "-" + news_url.split("/")[-2],
-                           "news_link": news_url,
-                           "news_title": news_title,
-                           "news_create_time": news_create_time,
-                           "news_content": news_content,
-                           "news_keyword": news_keyword,
-                           "news_tag": news_tag})
+            # newsQueue.put({"id": "Sanlih-" + tag_dict[news_tag.text] + "-" + news_url.split("/")[-2],
+            #                "news_link": news_url,
+            #                "news_title": news_title,
+            #                "news_create_time": news_create_time,
+            #                "news_content": news_content,
+            #                "news_keyword": news_keyword,
+            #                "news_tag": news_tag})
 
             # 爲了突出效果，設定延時
             time.sleep(1)
