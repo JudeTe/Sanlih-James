@@ -59,6 +59,20 @@ def getNewsContent(urlQueue):
             try :
                 news_tag = news_html.find("li", class_=" active")
 
+                # newsQueue.put({"id": "Sanlih-" + tag_dict[news_tag.text] + "-" + news_url.split("/")[-2],
+                #                "news_link": news_url,
+                #                "news_title": news_title,
+                #                "news_create_time": news_create_time,
+                #                "news_content": news_content,
+                #                "news_keyword": news_keyword,
+                #                "news_tag": news_tag.text})
+                print('OK1')
+            except AttributeError :
+                news_tag.text == "娛樂"
+                # pass
+                print('Except1')
+
+            finally:
                 newsQueue.put({"id": "Sanlih-" + tag_dict[news_tag.text] + "-" + news_url.split("/")[-2],
                                "news_link": news_url,
                                "news_title": news_title,
@@ -66,11 +80,6 @@ def getNewsContent(urlQueue):
                                "news_content": news_content,
                                "news_keyword": news_keyword,
                                "news_tag": news_tag.text})
-                print('OK1')
-            except AttributeError :
-                # news_tag == "娛樂"
-                pass
-                print('Except1')
 
 
             # if news_tag == None :
