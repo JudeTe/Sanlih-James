@@ -75,10 +75,10 @@ def getNewsContent(urlQueue):
             # else:
             #     news_view = news_view.text
             keyword_list = [] # 紀錄此新聞的關鍵字
-            if not news_keyword == None:
-                news_keyword = news_keyword.find_all("a")
-                for keyword in news_keyword:
-                    keyword_list.append(keyword.text)
+            # if not news_keyword == None:
+                # news_keyword = news_keyword.find_all("a")
+                # for keyword in news_keyword:
+                #     keyword_list.append(keyword.text)
 
             # 將新聞內容放入佇列
             newsQueue.put({"id": "Sanlih-" + tag_dict[news_tag.text] + "-" + news_url.split("/")[-2],
@@ -86,7 +86,7 @@ def getNewsContent(urlQueue):
                            "news_title": news_title,
                            "news_create_time": news_create_time,
                            "news_content": news_content,
-                           "news_keyword": keyword_list,
+                           "news_keyword": news_keyword,
                            "news_tag": news_tag})
 
             # 爲了突出效果，設定延時
