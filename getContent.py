@@ -56,8 +56,10 @@ def getNewsContent(urlQueue):
             news_create_time = news_html.find("div", class_="page-title-text").text
             news_content = news_html.find("div", id="Content1").text
             news_keyword = news_html.find("div", class_="keyword").text
-            news_tag = news_html.find("li", class_=" active").text
 
+            news_tag = news_html.find("li", class_=" active")
+            if news_tag == None :
+                news_tag.text == "娛樂"
 
 
             # news_view = news.find("div", class_="ndArticle_view")
@@ -73,13 +75,13 @@ def getNewsContent(urlQueue):
                     keyword_list.append(keyword.text)
 
             # 將新聞內容放入佇列
-            newsQueue.put({"id": "Sanlih-" + tag_dict[news_tag] + "-" + news_url.split("/")[-2],
+            newsQueue.put({"id": "Sanlih-" + tag_dict[news_tag.text] + "-" + news_url.split("/")[-2],
                            "news_link": news_url,
                            "news_title": news_title,
                            "news_create_time": news_create_time,
                            "news_content": news_content,
                            "news_keyword": keyword_list,
-                           "news_tag": news_tag})
+                           "news_tag": news_tag.text})
 
             # 爲了突出效果，設定延時
             time.sleep(1)
