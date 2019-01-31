@@ -59,8 +59,8 @@ def getNewsContent(urlQueue):
             try :
                 # news_tag = news_html.find("li", class_=" active")
 
-                news_temp = news_html.find("div", class_="top-second-nav")
-                if news_temp == None :
+
+                if "top-second-nav" not in news_html :
                     newsQueue.put({"id": "Sanlih-" + tag_dict["娛樂"] + "-" + news_url.split("/")[-2],
                                    "news_link": news_url,
                                    "news_title": news_title,
@@ -70,6 +70,7 @@ def getNewsContent(urlQueue):
                                    "news_tag": "娛樂"})
                     print('OK2')
                 else :
+                    news_temp = news_html.find("div", class_="top-second-nav")
                     news_tag = news_temp.find("li", class_=" active")
 
                     newsQueue.put({"id": "Sanlih-" + tag_dict[news_tag.text] + "-" + news_url.split("/")[-2],
