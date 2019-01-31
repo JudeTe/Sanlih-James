@@ -181,7 +181,6 @@ if __name__ == "__main__":
             if news["news_create_time"].split(" ")[0] == date:
                 date_news_list.append(news)
         news_dict = {"date": date, "news": date_news_list}
-        print(news_dict)
         ## 如果檔案存在
         if os.path.exists(date + "_Sanlih_news.json"):
             # 開啟之前紀錄新聞內容的檔案
@@ -196,7 +195,7 @@ if __name__ == "__main__":
         ## 如果檔案不存在
         else:
             # 將依照發布日期分類的新聞內容存檔
-            with open(date + "_Sanlih_news.json", "w", encoding="utf-8") as f:
+            with open('2019/01/31' + "_Sanlih_news.json", "w", encoding="utf-8") as f:
                 json.dump(news_dict, f)
 
     # 紀錄存檔結束時間
