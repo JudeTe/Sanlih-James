@@ -59,7 +59,8 @@ def getNewsContent(urlQueue):
             try :
                 news_tag = news_html.find("li", class_=" active").text
             except AttributeError :
-                news_tag == "娛樂"
+                # news_tag == "娛樂"
+                pass
 
 
 
