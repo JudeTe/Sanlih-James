@@ -68,17 +68,16 @@ def getNewsContent(urlQueue):
                                "news_tag": news_tag.text})
                 print('OK1')
             except AttributeError :
-                news_tag.text == "娛樂"
+                # news_tag.text == "娛樂"
                 # pass
                 print('Except1')
-                newsQueue.put({"id": "Sanlih-" + tag_dict[news_tag.text] + "-" + news_url.split("/")[-2],
+                newsQueue.put({"id": "Sanlih-" + tag_dict["娛樂"] + "-" + news_url.split("/")[-2],
                                "news_link": news_url,
                                "news_title": news_title,
                                "news_create_time": news_create_time,
                                "news_content": news_content,
                                "news_keyword": news_keyword,
-                               "news_tag": news_tag.text})
-
+                               "news_tag": "娛樂"})
 
 
 
