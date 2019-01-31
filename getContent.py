@@ -57,7 +57,7 @@ def getNewsContent(urlQueue):
             news_content = news_html.find("div", id="Content1").text
             news_keyword = news_html.find("div", class_="keyword").text
             news_html2 = str(list(news_html))
-            if "top-second-nav" not in news_html2 :
+            if "class_=\" active\"" not in news_html2 :
                 newsQueue.put({"id": "Sanlih-" + tag_dict["娛樂"] + "-" + news_url.split("/")[-2],
                                    "news_link": news_url,
                                    "news_title": news_title,
