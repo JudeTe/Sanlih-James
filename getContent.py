@@ -57,29 +57,29 @@ def getNewsContent(urlQueue):
             news_content = news_html.find("div", id="Content1").text
             news_keyword = news_html.find("div", class_="keyword").text
             try :
-                news_tag = news_html.find("li", class_=" active").text
+                news_tag = news_html.find("li", class_=" active")
 
-                # newsQueue.put({"id": "Sanlih-" + tag_dict[news_tag.text] + "-" + news_url.split("/")[-2],
-                #                "news_link": news_url,
-                #                "news_title": news_title,
-                #                "news_create_time": news_create_time,
-                #                "news_content": news_content,
-                #                "news_keyword": news_keyword,
-                #                "news_tag": news_tag.text})
-                print('OK1')
-            except AttributeError :
-                news_tag == "娛樂"
-                # pass
-                print('Except1')
-
-            finally:
-                newsQueue.put({"id": "Sanlih-" + tag_dict[news_tag] + "-" + news_url.split("/")[-2],
+                newsQueue.put({"id": "Sanlih-" + tag_dict[news_tag.text] + "-" + news_url.split("/")[-2],
                                "news_link": news_url,
                                "news_title": news_title,
                                "news_create_time": news_create_time,
                                "news_content": news_content,
                                "news_keyword": news_keyword,
-                               "news_tag": news_tag})
+                               "news_tag": news_tag.text})
+                print('OK1')
+            except AttributeError :
+                news_tag.text == "娛樂"
+                # pass
+                print('Except1')
+                newsQueue.put({"id": "Sanlih-" + tag_dict[news_tag.text] + "-" + news_url.split("/")[-2],
+                               "news_link": news_url,
+                               "news_title": news_title,
+                               "news_create_time": news_create_time,
+                               "news_content": news_content,
+                               "news_keyword": news_keyword,
+                               "news_tag": news_tag.text})
+
+
 
 
             # if news_tag == None :
