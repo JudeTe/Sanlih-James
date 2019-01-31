@@ -195,7 +195,7 @@ if __name__ == "__main__":
         ## 如果檔案不存在
         else:
             # 將依照發布日期分類的新聞內容存檔
-            with open('./2019/01/31' + "_sanlih_news.json", "w", encoding="utf-8") as f:
+            with open(date + "_sanlih_news.json", "w", encoding="utf-8") as f:
                 json.dump(news_dict, f)
 
     # 紀錄存檔結束時間
