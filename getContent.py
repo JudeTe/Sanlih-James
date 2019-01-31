@@ -160,7 +160,6 @@ if __name__ == "__main__":
     # 將每筆新聞從佇列拿出並放入List
     while not newsQueue.empty():
         news_list.append(newsQueue.get())
-    print(news_list)
     ## 不紀錄重複的新聞發布日期
     for news in news_list:
         #print(news)
