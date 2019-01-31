@@ -59,7 +59,7 @@ def getNewsContent(urlQueue):
             try :
                 news_tag = news_html.find("li", class_=" active").text
 
-                newsQueue.put({"id": "Sanlih-" + tag_dict[news_tag.text] + "-" + news_url.split("/")[-2],
+                newsQueue.put({"id": "Sanlih-" + tag_dict[news_tag] + "-" + news_url.split("/")[-2],
                                "news_link": news_url,
                                "news_title": news_title,
                                "news_create_time": news_create_time,
