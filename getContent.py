@@ -56,10 +56,15 @@ def getNewsContent(urlQueue):
             news_create_time = news_html.find("div", class_="page-title-text").text
             news_content = news_html.find("div", id="Content1").text
             news_keyword = news_html.find("div", class_="keyword").text
+            try :
+                news_tag = news_html.find("li", class_=" active").text
+            except AttributeError :
+                news_tag == "娛樂"
 
-            news_tag = news_html.find("li", class_=" active")
-            if news_tag == None :
-                news_tag.text == "娛樂"
+
+
+            # if news_tag == None :
+            #     news_tag.text == "娛樂"
 
 
             # news_view = news.find("div", class_="ndArticle_view")
@@ -81,7 +86,7 @@ def getNewsContent(urlQueue):
                            "news_create_time": news_create_time,
                            "news_content": news_content,
                            "news_keyword": keyword_list,
-                           "news_tag": news_tag.text})
+                           "news_tag": news_tag})
 
             # 爲了突出效果，設定延時
             time.sleep(1)
