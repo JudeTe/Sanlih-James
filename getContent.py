@@ -181,7 +181,7 @@ if __name__ == "__main__":
             if news["news_create_time"].split(" ")[0] == date:
                 date_news_list.append(news)
         news_dict = {"date": date, "news": date_news_list}
-
+        print(news_dict)
         ## 如果檔案存在
         if os.path.exists(date + "_Sanlih_news.json"):
             # 開啟之前紀錄新聞內容的檔案
